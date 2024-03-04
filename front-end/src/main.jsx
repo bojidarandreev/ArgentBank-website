@@ -1,11 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { Provider } from 'react-redux'
+import React from 'react'; 
+import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import App from './App.jsx'
-import './index.scss'
+import App from './App.jsx';
 import Home from './pages/Home/Home.jsx';
+
+import store from './redux/store.js';
+import './index.scss';
+
 import User from './pages/User/User.jsx';
 import Login from './pages/Login/Login.jsx';
 import NotFound from './pages/NotFound/Notfound.jsx';
