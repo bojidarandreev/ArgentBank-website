@@ -1,6 +1,5 @@
 export const login = (payload) => {
     return {
-        
         type: 'LOGIN',
         payload,
     };
@@ -10,7 +9,6 @@ export const logout = () => {
     return {
         type: 'LOGOUT',
     };
-    
 };
 
 export const getUserInfoAction = (payload) => {
@@ -20,9 +18,10 @@ export const getUserInfoAction = (payload) => {
     };
 };
 
-export const test = (payload) => {
+export const changeUserName = (payload) => {
     return {
-        type: 'TEST',
+        type: 'UPDATE_USER_DATA',
         payload,
     };
 };
+

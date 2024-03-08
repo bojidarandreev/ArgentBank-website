@@ -101,17 +101,6 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /transactions/{accountId}:
-    get:
-      summary: transactions API
-      
-      tags:
-        - Transaction Module
-      responses:
-        '200':
-          description: Return all transactions
-          schema:
-            $ref: '#/definitions/TransactionsResponse'
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -167,12 +156,3 @@ definitions:
     properties:
       userName:
         type: string
-  TransactionsResponse:
-    type: array
-    items:
-      properties:
-        id:
-          type: string
-        balance:
-          type: string
-      

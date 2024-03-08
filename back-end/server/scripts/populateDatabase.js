@@ -7,14 +7,16 @@ const users = [
     lastName: 'Stark',
     email: 'tony@stark.com',
     password: 'password123',
-    userName: 'Iron'
+    userName: 'Iron',
+    transport: 'Car'
   },
   {
     firstName: 'Steve',
     lastName: 'Rogers',
     email: 'steve@rogers.com',
     password: 'password456',
-    userName: 'Captain'
+    userName: 'Captain',
+    transport: 'Motorcycle'
   }
 ]
 

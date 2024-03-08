@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    align-items: center;
+    .edit-button {
+        align-self:first baseline;
+    }
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    .edit-button {
+        align-self:last baseline;
+    }
+}
+

@@ -5,6 +5,7 @@ const initialState = {
     firstName: '',
     lastName: '',
     token: '',
+    transport: '',
     isLogged: false,
 };
 
@@ -16,8 +17,15 @@ const userReducer = (state = initialState, action) => {
             return { ...initialState };
         case 'GET_INFO':
             return { ...state, ...action.payload };
-        default:
-            return state;
+        case 'CHANGE_INFO':
+            return { ...state, ...action.payload };
+        case 'SEND':
+            return { ...state, ...action.payload };
+        case 'UPDATE_USER_DATA':
+            return { ...state, ...action.payload };
+
+            default:
+                return state;
     }
 }
 
