@@ -1,17 +1,46 @@
 .header {
     display: flex;
     align-items: center;
-    .edit-button {
-        align-self:first baseline;
+    // .edit-button {
+    //     align-self:first baseline;
+    // }
+}
+.user-panel {
+    &-header{
+        width: fit-content;
+        
+    }
+    &-main{
+        display: flex;
+        flex-direction:column;
+        align-items: center;
     }
 }
+
 form {
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-items: center;
-    .edit-button {
-        align-self:last baseline;
-    }
+    gap: 1rem;
+    // .edit-button {
+    //     align-self:last baseline;
+    // }
 }
 
+.button {
+    &-save {
+        min-width: 45%;
+        position: relative;
+        align-self: flex-start;
+        margin-top: 19.33px;
+
+    }
+    &-cancel {
+        min-width: 45%;
+        position: relative;
+        align-self:flex-end;
+        margin-top: -39.33px;
+    }
+}

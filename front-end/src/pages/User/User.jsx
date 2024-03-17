@@ -85,15 +85,12 @@ function User() {
 
     return(
         
-        <main className="main bg-dark">
-      <div className="header">
-        <h1>Welcome back<br />{user.firstName} {user.lastName}!</h1>
+        <main className="main bg-dark user-panel-main">
+      <div className="header user-panel-header">
+        {!showInput && <h1>Welcome back<br />{user.userName} !</h1>}
         {showInput && <InputComponent toggleInputField={toggleInputField} />}
-        {/* {showInput && <button className='edit-button'>Save</button>} */}
-        <button className="edit-button" 
-        onClick={toggleInputField}>{showInput ? 'Close' : 'Edit Name'}</button>
-        {/* <button className='edit-button' onClick={unChange}>ActivateUserNameChange</button> */}
-        
+        <button className={ showInput ? "edit-button button-cancel" : "edit-button" }
+        onClick={toggleInputField}>{showInput ? 'Cancel' : 'Edit Name'}</button>
       </div>
       <h2 className="sr-only">Accounts</h2>
       <section className="account">

@@ -45,6 +45,8 @@ const handleInput = (e) => {
   setData({userName: e.target.value});
 }
     return (
+      <>
+      <h2>Edit user info</h2>
       <form
       onSubmit={(e) => {
         e.preventDefault();
@@ -53,33 +55,34 @@ const handleInput = (e) => {
         handleData();
       }}
       >
-        <label htmlFor="user-name">User name: </label>
-        <input
+        <label htmlFor="user-name">User name: <input
                 type="text"
                 id="user-name"
                 name="userName"
                 defaultValue={user.userName}
                 readOnly={false}
                 onChange={handleInput}
-              />
-        <label htmlFor="first-name">First name: </label>
-        <input
+              /></label>
+        
+        <label htmlFor="first-name">First name: <input
                 type="text"
                 id="first-name"
                 name="First name"
                 value={user.firstName}
                 readOnly={true}
-              />
-        <label htmlFor="last-name">Last name: </label>
-        <input
+              /></label>
+        
+        <label htmlFor="last-name">Last name: <input
                 type="text"
                 id="last-name"
                 name="Last name"
                 value={user.lastName}
                 readOnly={true}
-              />
-        <button className='edit-button'>Save</button>
+              /></label>
+        
+        <button className='edit-button button-save'>Save</button>
       </form>
+      </>
     );
   };
 
