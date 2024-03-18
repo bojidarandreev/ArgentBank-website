@@ -34,7 +34,10 @@ export function Login() {
           return navigate('/user');
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        alert("Le nom d'utilisateur ou le mot de passe est incorrect !");
+      });
   };
 
   return (

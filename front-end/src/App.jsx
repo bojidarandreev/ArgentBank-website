@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
-  const [count, setCount] = useState(0);
+  
   const element = <FontAwesomeIcon icon={['fak', 'my-icon']} />
   return (
     <>

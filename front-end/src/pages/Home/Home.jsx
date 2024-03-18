@@ -1,5 +1,4 @@
 import Features from "../../components/Features/Features";
-import Contact from "../Contact/Contact";
 export default function Home() {
     return(
         <>
@@ -13,7 +12,6 @@ export default function Home() {
         </section>
         </div>
         <Features />
-        <Contact />
         </>
     )
 }
