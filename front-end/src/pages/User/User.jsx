@@ -3,10 +3,9 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Transaction from '../../components/Transactions/Transaction';
+
 import { getUserInfoAction } from '../../redux/actions/user.actions';
 import InputComponent from '../../components/UsernameChange/UsernameChange';
-// import transactionsData from '../../data/transaction';
 
 import './user.scss'
 function User() {
