@@ -33,7 +33,7 @@ paths:
         "500":
           description: Internal Server Error
           content: {}
-      x-codegen-request-body-name: body
+      
   /user/signup:
     post:
       tags:
@@ -60,7 +60,6 @@ paths:
         "500":
           description: Internal Server Error
           content: {}
-      x-codegen-request-body-name: body
   /user/profile:
     put:
       tags:
@@ -89,7 +88,7 @@ paths:
           content: {}
       security:
       - Bearer: []
-      x-codegen-request-body-name: body
+      
     post:
       tags:
       - User Module
@@ -110,21 +109,14 @@ paths:
           content: {}
       security:
       - Bearer: []
-  /user/accounts/{account-id}:
+  /accounts:
     get:
       tags:
       - User Module
-      description: API for Accounts
-      parameters:
-      - name: account-id
-        in: path
-        description: User account ID to fetch all transactions for this account
-        required: true
-        schema:
-          type: string
+      description: API for Accounts(Fetch All accounts belonging to the logged in user)
       responses:
         "200":
-          description: Account transactions information retrieved successully
+          description: Accounts details retrieved successully
           content:
             application/json:
               schema:
@@ -136,9 +128,39 @@ paths:
           description: Authentication error! The authentication credentials for the
             requested resource are not valid
           content: {}
-        "403":
-          description: Forbiden access. The client does not have access rights to
-            the content.
+        "404":
+          description: The server cannot find the requested resource.
+          content: {}
+        "500":
+          description: Internal Server Error
+          content: {}
+      security:
+      - Bearer: []
+  /transactions/{account-Id}:
+    get:
+      tags:
+      - User Module
+      description: API for account transactions
+      parameters:
+      - name: account-Id
+        in: path
+        description: Account ID to fetch all transactions from account belonging to the logged in user
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Account transactions retrieved successully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountTransactionsApiResponse'
+        "400":
+          description: Invalid Fields
+          content: {}
+        "401":
+          description: Authentication error! The authentication credentials for the
+            requested resource are not valid
           content: {}
         "404":
           description: The server cannot find the requested resource.
@@ -148,21 +170,21 @@ paths:
           content: {}
       security:
       - Bearer: []
-  /user/transactions/{transaction-id}:
+  /transactions/{transaction-id}:
     get:
       tags:
       - User Module
-      description: API for Transactions
+      description: API for Transaction
       parameters:
       - name: transaction-id
         in: path
-        description: User account ID to fetch all transactions from
+        description: Transaction ID to fetch transaction details
         required: true
         schema:
           type: string
       responses:
         "200":
-          description: Account information retrieved successully
+          description: Transaction details retrieved successully
           content:
             application/json:
               schema:
@@ -173,10 +195,6 @@ paths:
         "401":
           description: Authentication error! The authentication credentials for the
             requested resource are not valid
-          content: {}
-        "403":
-          description: Forbiden access. The client does not have access rights to
-            the content.
           content: {}
         "404":
           description: The server cannot find the requested resource.
@@ -230,24 +248,9 @@ paths:
           content: {}
       security:
       - Bearer: []
-      x-codegen-request-body-name: body
+      
 components:
   schemas:
-    Tag:
-      type: object
-      properties:
-        transactionId:
-          type: string
-        transactionDate:
-          type: string
-        transactionDesctiption:
-          type: string
-        transactionAmount:
-          type: string
-        balance:
-          type: integer
-      xml:
-        name: tag
     User:
       type: object
       properties:
@@ -302,75 +305,60 @@ components:
     AccountApiResponse:
       type: object
       properties:
-        status:
-          type: integer
-        message:
+        accountId:
           type: string
-        body:
-          type: object
-          properties:
-            accountId:
-              type: string
-            accountName:
-              type: string
-            availableBalance:
-              type: integer
-            transactions:
-              type: array
-              xml:
-                wrapped: true
-              items:
-                $ref: '#/components/schemas/Tag'
-    TransactionApiResponse:
-      type: object
+        accountNumber:
+          type: integer
+        accountName:
+          type: string
+        availableBalance:
+          type: integer
+    AccountTransactionsApiResponse:
       properties:
-        status:
-          type: integer
-        message:
+        transactionId:
           type: string
-        body:
-          type: object
-          properties:
-            transactionId:
-              type: string
-            accountId:
-              type: string
-            date:
-              type: string
-            amount:
-              type: number
-            description:
-              type: string
-            category:
-              type: string
-            details:
-              type: string
+        date:
+          type: string
+        amount:
+          type: number
+        balance:
+          type: integer
+        description:
+          type: string
+    TransactionApiResponse:
+      properties:
+        date:
+          type: string
+        amount:
+          type: number
+        balance:
+          type: integer
+        description:
+          type: string
+        transactionType:
+          type: string
+        category:
+          type: string
+        note:
+          type: string
     TransactionUpdate:
       type: object
       properties:
         category:
           type: string
           description: category
-        details:
+        note:
           type: string
-          description: details
+          description: note
     TransactionUpdateApiResponse:
       type: object
       properties:
-        status:
-          type: integer
-        message:
+        category:
           type: string
-        body:
-          type: object
-          properties:
-            category:
-              type: string
-            details:
-              type: string
+        note:
+          type: string
   securitySchemes:
     Bearer:
       type: apiKey
       name: Authorization
       in: header
-x-original-swagger-version: "2.0"
